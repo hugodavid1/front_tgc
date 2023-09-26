@@ -1,83 +1,68 @@
 import React from "react";
+import Link from "next/link";
+import { AdCard, AdCardProps } from "./AdCard";
 
-const ads = [
-    {
-        title:"Table",
-        price: 120,
-        link: "ads/table",
-        imgUrl:""
-    },
-    {
-        title:"",
-        price:70,
-        link:"",
-        imgUrl:"",
-    }
+export const ads: AdCardProps[] = [
+  {
+    id: 1,
+    title: "Table",
+    price: 120,
+    link: "/ads/table",
+    imgUrl: "/images/table.webp",
+  },
+  {
+    id: 2,
+    title: "Dame-jeanne",
+    price: 75,
+    link: "/ads/dame-jeanne",
+    imgUrl: "/images/dame-jeanne.webp",
+  },
+  {
+    id: 3,
+    title: "Vide-poche",
+    price: 4,
+    link: "/ads/vide-poche",
+    imgUrl: "/images/vide-poche.webp",
+  },
+  {
+    id: 4,
+    title: "Vaisselier",
+    price: 900,
+    link: "/ads/vaisselier",
+    imgUrl: "/images/vaisselier.webp",
+  },
+  {
+    id: 5,
+    title: "Bougie",
+    price: 8,
+    link: "/ads/bougie",
+    imgUrl: "/images/bougie.webp",
+  },
+  {
+    id: 6,
+    title: "Porte-magazine",
+    price: 45,
+    link: "/ads/porte-magazine",
+    imgUrl: "/images/porte-magazine.webp",
+  },
 ];
 
-export function RecentAds() {
-    return (
-        <>
-            <main className="main-content">
-
-         <h2>Annonces récentes</h2>
+export function RecentAds(): React.ReactNode {
+  return (
+    <main className="main-content">
+      <h2>Annonces récentes</h2>
       <section className="recent-ads">
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/table">
-            <img className="ad-card-image" src="/images/table.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Table</div>
-              <div className="ad-card-price">120 €</div>
-            </div>
-          </a>
-        </div>
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/dame-jeanne">
-            <img className="ad-card-image" src="/images/dame-jeanne.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Dame-jeanne</div>
-              <div className="ad-card-price">75 €</div>
-            </div>
-          </a>
-        </div>
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/vide-poche">
-            <img className="ad-card-image" src="/images/vide-poche.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Vide-poche</div>
-              <div className="ad-card-price">4 €</div>
-            </div>
-          </a>
-        </div>
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/vaisselier">
-            <img className="ad-card-image" src="/images/vaisselier.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Vaisselier</div>
-              <div className="ad-card-price">900 €</div>
-            </div>
-          </a>
-        </div>
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/bougie">
-            <img className="ad-card-image" src="/images/bougie.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Bougie</div>
-              <div className="ad-card-price">8 €</div>
-            </div>
-          </a>
-        </div>
-        <div className="ad-card-container">
-          <a className="ad-card-link" href="/ads/porte-magazine">
-            <img className="ad-card-image" src="/images/porte-magazine.webp" />
-            <div className="ad-card-text">
-              <div className="ad-card-title">Porte-magazine</div>
-              <div className="ad-card-price">45 €</div>
-            </div>
-          </a>
-        </div>
+        {ads.map((item) => (
+          <AdCard
+            id={item.id}
+            key={item.id}
+            title={item.title}
+            price={item.price}
+            imgUrl={item.imgUrl}
+            link={item.link}
+          />
+        ))}
       </section>
-      </main>
-        </>
-    )
+    </main>
+  );
 }
